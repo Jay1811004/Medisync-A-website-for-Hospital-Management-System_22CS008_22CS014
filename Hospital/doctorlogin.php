@@ -1,37 +1,53 @@
 <?php
 session_start();
-    include("include/connection.php");
+include("include/connection.php");
 
-    if(isset($_POST['login']))
-    {
-        $username = $_POST['name'];
-        $password = $_POST['pass'];
-        $error = array();
+if (isset($_POST['login'])) {
+    $uname = $_POST['uname'];
+    $password = $_POST['pass'];
 
-        if(empty($username)){
-            $error['doctor'] = "Please Enter Username";
+    $error = array();
+
+    if (empty($uname)) {
+        $error['login'] = "Enter Username";
+    } else if (empty($password)) {
+        $error['login'] = "Enter Password";
+    } else {
+        $q = "SELECT * FROM doctors WHERE username = '$uname' AND password = '$password'";
+        $qq = mysqli_query($connect, $q);
+
+        if ($qq) {
+            $row = mysqli_fetch_array($qq);
+
+            if ($row) {
+                if ($row['status'] == "pending") {
+                    $error['login'] = "Please Wait for the admin to confirm";
+                } else if ($row['status'] == "Rejected") {
+                    $error['login'] = "Try again Later";
+                } else {
+                    // Store session and prepare for redirection
+                    $_SESSION['doctor'] = $uname;
+                    header("Location:doctor/index.php");
+                    exit(); // Ensure no further code is executed
+                }
+            } else {
+                $error['login'] = "Invalid Account";
+            }
+        } else {
+            echo "<script>alert('Error querying database');</script>";
         }
-        else if(empty($password))
-{
-    $error['doctor'] = "Please Enter Password";
+    }
+
+    // Show errors if any
+    if (count($error) > 0) {
+        foreach ($error as $err) {
+            echo "<script>alert('$err');</script>";
+        }
+    }
 }
+?>
 
-if(count($error)==0){
-    $query = "Select * from doctor where username='$username' and password='$password'";
-    $result = mysqli_query($connect,$query);
 
-    if(mysqli_num_rows($result) == 1){
-        echo "<script>alert('You have login As an doctor')</script>";
-        $_SESSION['doctor'] = $username;
-
-        header("Location:index.php");
-        exit();
-    }
-    else{
-        echo "<script>alert('Inavalid Username or Password')</script>";
-    }
-}}
-?> 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +56,7 @@ if(count($error)==0){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doctor Login Page</title>
     <style>
-         .image{
+        .image {
             background-image: url('img/h_background.jpg');
             background-repeat: no-repeat;
             background-size: cover;
@@ -48,26 +64,23 @@ if(count($error)==0){
             justify-content: center;
             align-items: center;
             height: 100vh;
-           
             margin: 0;
         }
-        
         .login-container {
             background: rgba(255, 255, 255, 0.9);
             padding: 20px;
-            margin-top:20px;
+            margin-top: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
             width: 500px;
-            height:450px;
-   margin-left:800px;
+            height: 470px;
+            margin-left: 800px;
         }
         .login-container img {
             width: 150px;
             height: 150px;
             margin-bottom: 20px;
-         
         }
         .login-container form {
             display: flex;
@@ -92,48 +105,48 @@ if(count($error)==0){
             border: none;
             border-radius: 5px;
             cursor: pointer;
-          
-          font-size: 16px;
+            font-size: 16px;
         }
     </style>
+    <script>
+        function validateForm() {
+            var uname = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            
+            if (uname === "") {
+                alert("Enter Username");
+                return false;
+            }
+            if (password === "") {
+                alert("Enter Password");
+                return false;
+            }
+            return true;
+        }
+    </script>
 </head>
 <body>
     <?php include("include/header.php"); ?>
     <div class="image">
-    <center>
-    <div class="login-container">
-        
-        <img src="img/d_login_icon.png" alt="Admin Login Icon">
-        <!-- <h2>Admin Login</h2> -->
-
-        <form method="post" >
-                <div class="danger">
-                <?php 
-                if(isset($error['doctor'])){
-                    $sh = $error['doctor'];
-                    $show = "</h4 class='danger'>$sh</h4>";
-                    echo $show;
-                }
-
-                else{
-                    $show = "";
-                }
-
-                // echo $show;
-                ?>
+        <center>
+            <div class="login-container">
+                <img src="img/d_login_icon.png" alt="Doctor Login Icon">
+                <form method="POST" action="" onsubmit="return validateForm()">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" name="uname" id="username" class="form-control" autocomplete="off" placeholder="Enter Username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="pass" id="password" class="form-control" autocomplete="off" placeholder="Enter Password">
+                    </div>
+                    <input type="submit" name="login" class="btn-submit" value="Login">
+                    <br>
+                    <p>I don't have an account <a href="apply.php">Apply Now!!!</a></p>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" name="name" id="username" class="form-control" autocomplete="off" placeholder="Enter Username">
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" name="pass" id="password" class="form-control" autocomplete="off" placeholder="Enter Password">
-            </div>
-            <input type="submit" name="login" class="btn-submit" value="Login">
-        </form>
         </center>
-        </div>
-
+    </div>
 </body>
 </html>
+
