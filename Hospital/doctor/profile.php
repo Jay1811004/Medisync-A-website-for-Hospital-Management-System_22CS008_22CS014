@@ -131,7 +131,7 @@ session_start();
                                     <h5 class="text-center my-2">Change Password</h5>
 
                                     <?php 
-                                    if($_POST['change_pass']) {
+                                    if(isset($_POST['change_pass'])) {  // Check if the form was submitted
                                         $old = $_POST['old_pass'];
                                         $new = $_POST['new_pass'];
                                         $con = $_POST['con_pass'];
@@ -139,22 +139,22 @@ session_start();
                                         $ol = "SELECT * FROM doctors WHERE username='$doc'";
                                         $ols = mysqli_query($connect,$ol);
                                         $row = mysqli_fetch_array($ols);
-                                        
-                                        if($old != $row['password']) {
 
+                                        if($old != $row['password']) {
+                                            // Handle incorrect old password
                                         }
                                         else if(empty($new)){
-
+                                            // Handle empty new password
                                         }
                                         else if($con != $new){
-
+                                            // Handle passwords not matching
                                         }
                                         else{
                                             $query = "UPDATE doctors SET password='$new' WHERE username='$doc'";
                                             mysqli_query($connect,$query);
+                                            // Handle successful password update
                                         }
                                     }
-                                    
                                     ?>
                                     <form method="post">
                                         <div class="form-group">
