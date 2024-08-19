@@ -13,22 +13,60 @@
             justify-content: space-between;
             height: 100%;
             padding: 20px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .info-container:hover, .account-container:hover, .apply-container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
         .info-container img, .account-container img, .apply-container img {
             max-width: 100%;
+            border-radius: 8px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .info-container:hover img, .account-container:hover img, .apply-container:hover img {
+            transform: scale(1.05);
         }
 
         .info-container .btn, .account-container .btn, .apply-container .btn {
             align-self: center;
             margin-top: auto;
         }
+
         #p1 {
-            color:#00008B;  
+            color: #00008B;  
         }
-        #p1 {
-            color:#013220;
-            padding-left:50px;  
+
+        #p2 {
+            color: #013220;
+            padding-left: 50px;  
+        }
+
+        .h_name {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .h_name p {
+            margin: 0;
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .btn {
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            background-color: #28a745;
+            transform: scale(1.05);
         }
     </style>
 </head>
