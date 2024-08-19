@@ -40,15 +40,14 @@ if(count($error)==0){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login Page</title>
     <style>
-
         .image{
-            background-image: url('img/login.webp');
+            background-image: url('img/h_background.jpg');
             background-repeat: no-repeat;
             background-size: cover;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 92.1vh;
+            height: 100vh;
             margin: 0;
         }
         .login-container {
