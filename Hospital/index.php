@@ -40,9 +40,9 @@
             color: #00008B;  
         }
 
-        #p2 {
+        span {
             color: #013220;
-            padding-left: 50px;  
+            /* padding-left: 50px;   */
         }
 
         .h_name {
@@ -68,6 +68,9 @@
             background-color: #28a745;
             transform: scale(1.05);
         }
+        span{
+            color:orange;
+        }
     </style>
 </head>
 <body>
@@ -76,8 +79,8 @@
 
 
     <div class="h_name">
-        <p id="p1">NARAYAN</p>
-        <p id="p2">HOSPITAL</p>
+        <p id="p1">NARAYAN  <span>HOSPITAL</span></p>
+        <!-- <p id="p2"></p> -->
     </div>
 
     <div style="margin-top: 50px;"></div> 
