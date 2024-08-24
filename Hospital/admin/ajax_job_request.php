@@ -15,7 +15,9 @@ $output .="
             <th>Username</th>
             <th>Gender</th>
             <th>Phone</th>
-            <th>City</th>  
+            <th>City</th> 
+            <th>Qualification</th> 
+            <th>Experience</th> 
             <th>Date of Registration</th>  
             <th>Action</th> 
         </tr>
@@ -31,28 +33,32 @@ if(mysqli_num_rows($res) < 1) {
 
 while($row = mysqli_fetch_array($res)){
     $output .= "
-        <tr>
-        <td>".$row['id']."</td>
-        <td>".$row['firstname']."</td>
-        <td>".$row['surname']."</td>
-        <td>".$row['username']."</td>
-        <td>".$row['gender']."</td>
-        <td>".$row['phone']."</td>
-        <td>".$row['city']."</td>
-        <td>".$row['date_reg']."</td>
-        <td>
-            <div class='col-md-12'>
-                <div class='row'>
-                    <div class='col-md-6'>
-                        <button id='".$row['id']."' class='btn btn-success approve'>Approve</button>
-                    </div>
-                    <div class='col-md-6'>
-                         <button id='".$row['id']."' class='btn btn-danger reject'>Reject</button>
-                    </div>
+    <tr>
+    <td>".$row['id']."</td>
+    <td>".$row['firstname']."</td>
+    <td>".$row['surname']."</td>
+    <td>".$row['username']."</td>
+    <td>".$row['gender']."</td>
+    <td>".$row['phone']."</td>
+    <td>".$row['city']."</td>
+    <td>".$row['qualification']."</td>
+    <td>".$row['experience']."</td>
+    <td>".$row['date_reg']."</td>
+    <td>
+        <div class='col-md-12'>
+            <div class='row'>
+                <div class='col-md-6'>
+                    <button id='".$row['id']."' class='btn btn-success approve'>Approve</button>
+                </div>
+                <div class='col-md-6'>
+                     <button id='".$row['id']."' class='btn btn-danger reject'>Reject</button>
                 </div>
             </div>
-        </td>
-    ";
+        </div>
+    </td>
+</tr>
+";
+
 }
 
 $output .= "
