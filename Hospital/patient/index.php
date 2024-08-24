@@ -25,7 +25,7 @@ session_start();
                 </div>
                 <div class="col-md-10">
                     <div class="container-fluid">
-                        <h5>Doctor's Dashboard</h5>
+                        <h5>Patient Dashboard</h5>
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="col-md-3 my-2 bg-info mx-2" style="height: 150px;">
