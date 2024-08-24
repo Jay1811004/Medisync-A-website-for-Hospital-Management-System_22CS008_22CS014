@@ -48,6 +48,8 @@ session_start();
                             <h5 class="my-3">Phone: <?php echo $row['phone']; ?></h5>
                             <h5 class="my-3">Gender: <?php echo $row['gender']; ?></h5>
                             <h5 class="my-3">City: <?php echo $row['city']; ?></h5>
+                            <h5 class="my-3">Qualification: <?php echo $row['qualification']; ?></h5>
+                            <h5 class="my-3">Exprience: <?php echo $row['experience'];echo " years"; ?></h5>
                             <h5 class="my-3">Date of Registration: <?php echo $row['date_reg']; ?></h5>
                             <h5 class="my-3">Salary: ₹<?php echo $row['salary']; ?></h5>
 
