@@ -145,6 +145,7 @@ if (isset($_POST['change_pass'])) {
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="col-md-6">
+                                    <h4>Doctor Profile</h4>
                                     <?php
                                     $doc = $_SESSION['doctor'];
                                     $query = "SELECT * FROM doctors WHERE username='$doc'";
@@ -191,6 +192,15 @@ if (isset($_POST['change_pass'])) {
                                                 <td><?php echo $row['city'];?></td>
                                             </tr>
                                             <tr>
+                                                <td>Qualification</td>
+                                                <td><?php echo $row['qualification'];?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Experience</td>
+                                                <td><?php echo $row['experience'];?></td>
+                                            </tr>
+                                            <tr>
+                                        
                                                 <td>Salary</td>
                                                 <td><?php echo "₹".$row['salary']."";?></td>
                                             </tr>
