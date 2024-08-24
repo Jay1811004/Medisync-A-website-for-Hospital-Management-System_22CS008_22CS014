@@ -15,6 +15,8 @@ if (isset($_POST['apply'])) {
     $phone = mysqli_real_escape_string($connect, $_POST['number']);
     $gender = mysqli_real_escape_string($connect, $_POST['gender']);
     $city = mysqli_real_escape_string($connect, $_POST['country']);
+    $qualification = mysqli_real_escape_string($connect, $_POST['qualification']);
+    $exprience = mysqli_real_escape_string($connect, $_POST['exprience']);
     $password = mysqli_real_escape_string($connect, $_POST['pass']);
     $confirm_password = mysqli_real_escape_string($connect, $_POST['con_pass']);
     
@@ -33,15 +35,17 @@ if (isset($_POST['apply'])) {
         $error['apply'] = "Select Gender";
     } else if (empty($city)) {
         $error['apply'] = "Select City name";
-    } else if (empty($password)) {
-        $error['apply'] = "Enter Password";
+    } else if (empty($qualification)) {
+        $error['apply'] = "Enter your qualification";
+    } else if (empty($exprience)) {
+        $error['apply'] = "Enter your exprience";
     } else if ($confirm_password != $password) {
         $error['apply'] = "Both Passwords do not match";
     }
 
     if (count($error) == 0) {
-        $query = "INSERT INTO `doctors`(`firstname`, `surname`, `username`, `email`, `gender`, `phone`, `city`, `password`, `salary`, `date_reg`, `status`, `profile`)
-                  VALUES ('$firstname','$surname','$username','$email','$gender','$phone','$city','$password','0',NOW(),'pending','doctor.jpg')";
+        $query = "INSERT INTO `doctors`(`firstname`, `surname`, `username`, `email`, `gender`, `phone`, `city`, `qualification`,`experience`, `password`, `salary`, `date_reg`, `status`, `profile`)
+                  VALUES ('$firstname','$surname','$username','$email','$gender','$phone','$city','$qualification','$exprience','$password','0',NOW(),'pending','doctor.jpg')";
 
         $res = mysqli_query($connect, $query);
         if ($res) {
@@ -85,7 +89,7 @@ if (isset($error['apply'])) {
             height: 100%;
         }
         .login-container {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.7);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -137,6 +141,8 @@ if (isset($error['apply'])) {
             var gender = document.forms["applyForm"]["gender"].value;
             var phone = document.forms["applyForm"]["number"].value;
             var city = document.forms["applyForm"]["country"].value;
+            var qualification = document.forms["applyForm"]["qualification"].value;
+            var exprience = document.forms["applyForm"]["exprience"].value;
             var password = document.forms["applyForm"]["pass"].value;
             var confirm_password = document.forms["applyForm"]["con_pass"].value;
 
@@ -166,6 +172,14 @@ if (isset($error['apply'])) {
             }
             if (city == "") {
                 alert("Select City");
+                return false;
+            }
+            if (qualification == "") {
+                alert("Enter your qualification");
+                return false;
+            }
+            if (exprience == "") {
+                alert("Enter your exprience");
                 return false;
             }
             if (password == "") {
@@ -214,8 +228,10 @@ if (isset($error['apply'])) {
                 </div>
                 <div class="form-group">
                     <label>Phone Number</label>
-                    <input type="text" name="number" class="form-control" autocomplete="off" placeholder="Enter Phone Number" value="<?php if(isset($_POST['number'])) echo $_POST['number']; ?>">
+                    <input type="text" name="number" class="form-control" autocomplete="off" placeholder="Enter Phone Number"  value="<?php if(isset($_POST['number'])) echo $_POST['number']; ?>">
                 </div>
+
+                
                 <div class="form-group">
                     <label>Select City</label>
                     <select name="country" class="form-control">
@@ -226,7 +242,18 @@ if (isset($error['apply'])) {
                         <option value="Surat">Surat</option>
                         <option value="Vadodra">Vadodra</option>
                     </select>
+                    </div>
+                    <div class="form-group">
+                    <label>Qualification</label>
+                    <input type="text" name="qualification" class="form-control" autocomplete="off" placeholder="Enter your Qualification" value="<?php if(isset($_POST['qualification'])) echo $_POST['qualification']; ?>">
                 </div>
+
+                <div class="form-group">
+                    <label>Exprience</label>
+                    <input type="text" name="exprience" class="form-control" autocomplete="off" placeholder="Enter how many years of exprience" value="<?php if(isset($_POST['exprience'])) echo $_POST['exprience']; ?>">
+                </div>
+
+              
                 <div class="form-group">
                     <label>Password</label>
                     <input type="password" name="pass" class="form-control" autocomplete="off" placeholder="Enter Password">
@@ -243,4 +270,3 @@ if (isset($error['apply'])) {
     </div>
 </body>
 </html>
-
