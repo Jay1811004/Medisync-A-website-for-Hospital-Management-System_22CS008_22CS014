@@ -73,12 +73,16 @@ include("../include/connection.php");
                         <div class="col-md-12">
                             <div class="row">
                                  <div class="col-md-8">
-                                        <h5 class="my-2 text-white" style="font-size: 30px;">0</h5>
+                                    <?php
+                                        $p = mysqli_query($connect,"select * from patient");
+                                        $pp = mysqli_num_rows($p);
+                                    ?>
+                                        <h5 class="my-2 text-white" style="font-size: 30px;"><?php echo $pp;?></h5>
                                         <h5 class="text-white">Total</h5>
                                         <h5 class="text-white">Patients</h5>
                                  </div>
                                 <div class="col-md-4">
-                                        <a href="#"><i class="fa fa-procedures fa-3x my-4" style="color:white;"></i></a>
+                                        <a href="patient.php"><i class="fa fa-procedures fa-3x my-4" style="color:white;"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -88,12 +92,16 @@ include("../include/connection.php");
                         <div class="col-md-12">
                                 <div class="row">
                                     <div class="col-md-8">
-                                        <h5 class="my-2 text-white" style="font-size: 30px;">0</h5>
+                                    <?php
+                                        $r = mysqli_query($connect,"select * from report");
+                                        $re = mysqli_num_rows($r);
+                                    ?>
+                                        <h5 class="my-2 text-white" style="font-size: 30px;"><?php echo $re;?></h5>
                                         <h5 class="text-white">Total</h5>
                                         <h5 class="text-white">Report</h5>
                                     </div>
                                     <div class="col-md-4">
-                                        <a href="#"><i class="fa fa-flag fa-3x my-4" style="color:white;"></i></a>
+                                        <a href="report.php"><i class="fa fa-flag fa-3x my-4" style="color:white;"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -124,12 +132,18 @@ include("../include/connection.php");
                         <div class="col-md-12">
                                 <div class="row">
                                     <div class="col-md-8">
-                                        <h5 class="my-2 text-white" style="font-size: 30px;">0</h5>
+                                    <?php
+                                        $i = mysqli_query($connect,"select sum(amount_paid) as profit from income");
+                                        $row = mysqli_fetch_array($i);
+                                        $in = $row['profit'];
+
+                                    ?>
+                                        <h5 class="my-2 text-white" style="font-size: 30px;"><?php echo "$$in";?></h5>
                                         <h5 class="text-white">Total</h5>
                                         <h5 class="text-white">Income</h5>
                                     </div>
                                     <div class="col-md-4">
-                                        <a href="#"><i class="fa fa-money-check-alt fa-3x my-4" style="color:white;"></i></a>
+                                        <a href="income.php"><i class="fa fa-money-check-alt fa-3x my-4" style="color:white;"></i></a>
                                     </div>
                                 </div>
                             </div>
