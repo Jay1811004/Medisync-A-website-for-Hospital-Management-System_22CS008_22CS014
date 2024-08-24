@@ -42,6 +42,8 @@ $output .="
             <th>Gender</th>
             <th>Phone</th>
             <th>City</th>  
+            <th>Qualification</th> 
+            <th>Experience</th> 
             <th>Salary</th>
             <th>Date of Registration</th>  
             <th>Action</th> 
@@ -66,6 +68,8 @@ while($row = mysqli_fetch_array($res)){
         <td>".$row['gender']."</td>
         <td>".$row['phone']."</td>
         <td>".$row['city']."</td>
+        <td>".$row['qualification']."</td>
+        <td>".$row['experience']."</td>
         <td>".$row['salary']."</td>
         <td>".$row['date_reg']."</td>
         <td>
