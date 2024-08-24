@@ -63,12 +63,12 @@ session_start();
             });
 
 
-            $(document).on('click', '.approve', function(){
+            $(document).on('click', '.reject', function(){
 
                 var id = $(this).attr("id");
 
                 $.ajax({
-                    url:"ajax_approve.php",
+                    url:"ajax_reject.php",
                     method:"POST",
                     data:{id:id},
                     success:function(data){
@@ -77,20 +77,8 @@ session_start();
                 });
             });
 
-            $(document).on('click', '.approve', function(){
-
-            var id = $(this).attr("id");
-
-            $.ajax({
-                url:"ajax_reject.php",
-                method:"POST",
-                data:{id:id},
-                success:function(data){
-                show();
-            }
-        });
+            
     });
-});
     </script>
 </body>
 </html>
