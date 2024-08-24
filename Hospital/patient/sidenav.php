@@ -17,9 +17,9 @@
 <div class="list-group " style="height: 100vh;">
     <a href="index.php" class="list-group-item list-group-item-action text-center text-white">Dashboard</a>
     <a href="profile.php" class="list-group-item list-group-item-action text-center text-white">Profile</a>
-    <a href="doctor.php" class="list-group-item list-group-item-action text-center text-white">Book Appointment</a>
-    <a href="" class="list-group-item list-group-item-action text-center text-white">Report</a>
-    <a href="admin.php" class="list-group-item list-group-item-action text-center text-white">Invoice</a>
+    <a href="#" class="list-group-item list-group-item-action text-center text-white">Book Appointment</a>
+    <a href="#" class="list-group-item list-group-item-action text-center text-white">Report</a>
+    <a href="#" class="list-group-item list-group-item-action text-center text-white">Invoice</a>
  </div>
 </body>
 </html>
