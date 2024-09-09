@@ -13,13 +13,20 @@ if(isset($_POST['login'])){
         echo "<script>alert('Enter Password')</script>";
     }
     else{
-        $query = "select * from patient where username = '$uname' and password = '$pass'";
-        $res = mysqli_query($connect,$query);
+        // Fetch the patient data from the database
+        $query = "SELECT * FROM patient WHERE username = '$uname' AND password = '$pass'";
+        $res = mysqli_query($connect, $query);
 
-        if(mysqli_num_rows($res)==1){
-            header("Location:patient/index.php");
+        // Check if a matching patient exists
+        if(mysqli_num_rows($res) == 1){
+            $row = mysqli_fetch_array($res); // Fetch the patient data
 
-            $_SESSION['patient']=$uname;
+            // Store the patient username and ID in session
+            $_SESSION['patient'] = $uname;
+            $_SESSION['patient_id'] = $row['id'];
+
+            // Redirect to the patient dashboard or home page
+            header("Location: patient/index.php");
         }
         else{
             echo "<script>alert('Invalid Account')</script>";
@@ -27,6 +34,7 @@ if(isset($_POST['login'])){
     }
 }
 ?>
+
 
 
 
