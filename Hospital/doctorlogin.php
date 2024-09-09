@@ -28,6 +28,7 @@ if (isset($_POST['login'])) {
                     // Store session and prepare for redirection
                     $_SESSION['doctor'] = $uname;
                     header("Location:doctor/index.php");
+                    $_SESSION['doctor_id'] = $row['id']; 
                     exit(); // Ensure no further code is executed
                 }
             } else {
@@ -67,14 +68,14 @@ if (isset($_POST['login'])) {
             margin: 0;
         }
         .login-container {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.7);
             padding: 20px;
             margin-top: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
             width: 500px;
-            height: 470px;
+            height: 380px;
             margin-left: 800px;
         }
         .login-container img {
@@ -107,6 +108,10 @@ if (isset($_POST['login'])) {
             cursor: pointer;
             font-size: 16px;
         }
+        .login-container h3{
+            color: Blue;
+        }
+
     </style>
     <script>
         function validateForm() {
@@ -130,7 +135,8 @@ if (isset($_POST['login'])) {
     <div class="image">
         <center>
             <div class="login-container">
-                <img src="img/d_login_icon.png" alt="Doctor Login Icon">
+                <!-- <img src="img/d_login_icon.png" alt="Doctor Login Icon"> -->
+                 <h3>Doctor Login Portal</h3>
                 <form method="POST" action="" onsubmit="return validateForm()">
                     <div class="form-group">
                         <label for="username">Username</label>
@@ -149,4 +155,3 @@ if (isset($_POST['login'])) {
     </div>
 </body>
 </html>
-
