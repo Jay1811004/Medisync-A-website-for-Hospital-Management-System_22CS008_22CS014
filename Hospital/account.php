@@ -25,8 +25,7 @@ if (isset($_POST['apply'])) {
         $error['apply'] = "Enter Surname";
     } else if (empty($username)) {
         $error['apply'] = "Enter Username";
-    } else if (empty($email)) {
-        $error['apply'] = "Enter Email";
+    
     } else if (empty($phone)) {
         $error['apply'] = "Enter Phone No";
     } else if (empty($gender)) {
