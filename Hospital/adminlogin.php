@@ -40,25 +40,26 @@ if(count($error)==0){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login Page</title>
     <style>
+
         .image{
-            background-image: url('img/h_background.jpg');
+            background-image: url('img/admin_back.jpg');
             background-repeat: no-repeat;
             background-size: cover;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 92.1vh;
             margin: 0;
         }
         .login-container {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.2);
             padding: 20px;
             margin-top:40px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
             width: 500px;
-            height:400px;
+            height:320px;
    margin-left:800px;
         }
         .login-container img {
@@ -97,6 +98,9 @@ if(count($error)==0){
             color:red;
             font-weight:bolder;
         }
+        .login-container h3{
+            color: Blue;
+        }
     </style>
 </head>
 <body>
@@ -105,8 +109,8 @@ if(count($error)==0){
     <center>
     <div class="login-container">
         
-        <img src="img/admin login.png" alt="Admin Login Icon">
-        <!-- <h2>Admin Login</h2> -->
+        <!-- <img src="img/admin login.png" alt="Admin Login Icon"> -->
+        <h3>Admin Login Portal</h3>
         <form method="post" >
             <div class="danger">
                 <?php 
