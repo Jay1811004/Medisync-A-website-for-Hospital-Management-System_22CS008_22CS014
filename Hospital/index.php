@@ -100,7 +100,7 @@
                 <div class="account-container shadow">
                     <img src="img/patient.jpg" alt="Create Account">
                     <h5 class="text-center">Create Account so that we can take good care of you.</h5>
-                    <a href="#">
+                    <a href="patientlogin.php">
                         <button class="btn btn-success my-3">Create Account!!</button>
                     </a>
                 </div>
@@ -108,9 +108,9 @@
 
             <div class="col-md-4">
                 <div class="apply-container shadow">
-                    <img src="img/doctor.jpg" alt="Apply Now">
-                    <h5 class="text-center">We are employing for doctors</h5>
-                    <a href="#">
+                    <img src="img/indext_job.jpg" alt="Apply Now" style="width:250px; height:200px;">
+                    <h5 class="text-center">We are employing for staff like Receptionist, Pharmacist & Nurses</h5>
+                    <a href="staffaccount.php">
                         <button class="btn btn-success my-3">Apply Now!!</button>
                     </a>
                 </div>
